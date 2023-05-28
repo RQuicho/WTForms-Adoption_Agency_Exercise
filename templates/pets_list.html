@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} All Pets {% endblock %}
+
+{% block content %}
+
+<h1>Pets</h1>
+
+{% for pet in pets %}
+
+    <figure class="figure">
+        <img src="{{pet.photo_url}}" class="figure-img img-fluid rounded"  alt="Profile image of {{pet.name}}" width="250">
+        {% if pet.available %}
+            <figcaption class="figure-caption">{{pet.name}} is <strong>available!</strong></figcaption>
+        {% else %}
+            <figcaption class="figure-caption">{{pet.name}} is not available.</figcaption>
+        {% endif %}
+    </figure>
+
+{% endfor %}
+
+
+{% endblock %}
