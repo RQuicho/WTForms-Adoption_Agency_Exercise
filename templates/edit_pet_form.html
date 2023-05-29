@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %} Edit Pet Form {% endblock %}
+
+{% block content %}
+
+<h1 class="display-1 text-center">Pet Details</h1>
+
+<div class="card mb-3 container" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{pet.photo_url}}" class="img-fluid rounded-start" alt="Profile image of {{pet.name}}">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{pet.name}}</h5>
+          <p class="card-text">Species: {{pet.species}}</p>
+          <p class="card-text">Age: {{pet.age}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<h1 class="display-1 text-center">Edit Pet</h1>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            {% for field in form if field.widget.input_type != 'hidden' %}
+            <div class="p-3">
+                {{field.label(class_="form-label")}}
+                {{field(class_="form-control")}}
+
+                {% for err in field.errors %}
+                <small class="form-text text-danger">{{err}}</small>
+                {% endfor %}
+            </div>
+            {% endfor %}
+            <button class="btn btn-success">Edit</button>
+            <a href="/" class="btn btn-warning">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

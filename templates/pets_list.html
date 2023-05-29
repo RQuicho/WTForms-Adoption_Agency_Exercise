@@ -11,9 +11,9 @@
     <figure class="figure">
         <img src="{{pet.photo_url}}" class="figure-img img-fluid rounded"  alt="Profile image of {{pet.name}}" width="250">
         {% if pet.available %}
-            <figcaption class="figure-caption">{{pet.name}} is <strong>available!</strong></figcaption>
+            <figcaption class="figure-caption"><a href="/{{pet.id}}">{{pet.name}}</a> is <strong>available!</strong></figcaption>
         {% else %}
-            <figcaption class="figure-caption">{{pet.name}} is not available.</figcaption>
+            <figcaption class="figure-caption"><a href="/{{pet.id}}">{{pet.name}}</a> is not available.</figcaption>
         {% endif %}
     </figure>
 

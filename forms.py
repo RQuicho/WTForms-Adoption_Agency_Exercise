@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, FloatField, BooleanField, IntegerField, RadioField, SelectField, ValidationError
+from wtforms import StringField, FloatField, BooleanField, IntegerField, RadioField, SelectField, ValidationError, TextAreaField
 from wtforms.validators import InputRequired, URL, Optional
 
 def valid_species(form, field):
@@ -20,5 +20,10 @@ class AddPetForm(FlaskForm):
     species = StringField("Species", validators=[InputRequired(message="Species can't be blank"), valid_species])
     photo_url = StringField("Photo URL", validators=[URL(message="Must be valid URL"), Optional()])
     age = IntegerField("Age", validators=[Optional(), valid_age])
-    notes = StringField("Notes")
+    notes = TextAreaField("Notes", validators=[Optional()])
 
+class EditPetForm(FlaskForm):
+    """Form for edting pets"""
+    photo_url = StringField("Photo URL", validators=[URL(message="Must be valid URL"), Optional()])
+    notes = TextAreaField("Notes", validators=[Optional()])
+    available = BooleanField("Available")
